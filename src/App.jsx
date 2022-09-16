@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import { FiSearch } from 'react-icons/fi'
-import api from './services/api'
-import './styles.css'
+import { useState } from "react";
+import { FiSearch } from "react-icons/fi";
+import api from "./services/api";
+import "./styles.css";
 function App() {
-
-  const [input, setInput] = useState('')
-  const [cep, setCep] = useState({})
+  const [input, setInput] = useState("");
+  const [cep, setCep] = useState({});
 
   async function handleSearch() {
-    if (input === '') {
-      alert('preencha algum cep!')
+    if (input === "") {
+      alert("preencha algum cep!");
     }
 
     try {
       const response = await api.get(`${input}/json`);
       setCep(response.data);
-      setInput('');
+      setInput("");
       console.log(response);
     } catch {
-      alert("Ops erro ao buscar aqui")
-      setInput('');
+      alert("Ops erro ao buscar aqui");
+      setInput("");
     }
   }
 
   return (
     <div className="container">
-      <h1 className="title">Buscador Cep</h1>
+      <h1 className="title">Buscador de Cep</h1>
 
-      <div
-        className="containerInput">
-        <input type="text"
+      <div className="containerInput">
+        <input
+          type="text"
           placeholder="Digite seu CEP..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -41,17 +40,17 @@ function App() {
       </div>
 
       {Object.keys(cep).length > 0 && (
-        <main className='main'>
+        <main className="main">
           <h2>CEP: {cep.cep}</h2>
-          
-          <span>Rua: {cep.logradouro}</span>
-          <span>{cep.bairro}</span>
-          <span>{cep.localidade} - {cep.uf}</span>
 
+          <span>Rua: {cep.logradouro}</span>
+          <span>Bairro: {cep.bairro}</span>
+          
+          <span>
+           Localidade: {cep.localidade} - {cep.uf}
+          </span>
         </main>
       )}
-
-
     </div>
   );
 }
