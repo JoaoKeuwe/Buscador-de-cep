@@ -7,9 +7,9 @@ recentemente fiz esse projeto que é uma página que através do CEP fornecido b
 
 utilizei as seguintes Linguagens:
 
- JavaScript - ReactJs
+- JavaScript - ReactJs
 
- CSS 
+- CSS 
 
 https://user-images.githubusercontent.com/91097315/192167701-4b535696-a806-42e8-bb66-eed32b011753.mp4
 
